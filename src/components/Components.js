@@ -9,7 +9,7 @@ export default class Components {
     return Components._components;
   }
 
-  static setComponents(comps) {
+  static setComponents(comps) {  //所有的组件
     // Set the tableView method on BaseComponent.
     if (comps.base) {
       // Implement the tableView method.

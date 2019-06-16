@@ -343,6 +343,7 @@ export default class Component {
    * @param {string} text - The i18n identifier.
    * @param {Object} params - The i18n parameters to use for translation.
    */
+  //Save
   t(text, params) {
     params = params || {};
     params.nsSeparator = '::';

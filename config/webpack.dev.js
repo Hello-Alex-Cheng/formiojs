@@ -6,10 +6,10 @@ const WebpackConfig = require('./webpack.config');
 module.exports = (entry, output) => {
   return _.merge({}, WebpackConfig, {
     mode: 'development',
-    entry: `./lib/${entry}`,
+    entry: "./lib/index.js",
     output: {
       path: path.resolve(__dirname, '../dist'),
-      filename: output
+      filename: '[name].js'
     }
   });
 };

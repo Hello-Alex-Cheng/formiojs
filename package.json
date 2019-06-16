@@ -12,9 +12,9 @@
     "embed.js",
     "full.js"
   ],
-  "pre-commit": [
-    "lint"
-  ],
+//  "pre-commit": [
+//    "lint"
+//  ],
   "scripts": {
     "build": "esdoc;gulp build",
     "watch": "babel -w ./src/ --out-dir ./lib/",
@@ -24,37 +24,14 @@
     "lint": "gulp eslint",
     "serve": "jekyll serve --config _config.yml,_config.dev.yml",
     "test": "NODE_OPTIONS=\"--max-old-space-size=4096\" karma start --verbose --single-run",
-    "test:watch": "NODE_OPTIONS=\"--max-old-space-size=4096\" karma start --no-single-run --auto-watch"
+    "test:watch": "NODE_OPTIONS=\"--max-old-space-size=4096\" karma start --no-single-run --auto-watch",
+    "webpack": "webpack --config=config/webpack.dev.js --mode=development"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/formio/formio.js.git"
   },
-  "contributors": [
-    {
-      "name": "Travis Tidwell",
-      "github": "https://github.com/travist",
-      "email": "travis@form.io"
-    },
-    {
-      "name": "Randall Knutson",
-      "github": "https://github.com/randallknutson",
-      "email": "randall@form.io"
-    },
-    {
-      "name": "Doug Lee",
-      "github": "https://github.com/douglaselee",
-      "email": "douglaselee@comcast.net"
-    },
-    {
-      "name": "Eric Alter",
-      "email": "neolanders@hotmail.com"
-    },
-    {
-      "name": "Guillaume SMAHA",
-      "email": "guillaume.smaha@gmail.com"
-    }
-  ],
+
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/formio/formio.js/issues"
@@ -137,6 +114,7 @@
     "pygments-css": "^1.0.0",
     "sinon": "^7.3.2",
     "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
     "webpack-stream": "^5.2.1",
     "written-number": "^0.9.1"
   }

@@ -9,6 +9,7 @@ import NativePromise from 'native-promise-only';
 import _ from 'lodash';
 require('./components/builder');
 
+
 export default class WebformBuilder extends Webform {
   constructor(element, options) {
     super(element, options);
@@ -63,6 +64,9 @@ export default class WebformBuilder extends Webform {
       return components;
     };
     this.options.hooks.addComponent = (container, comp, parent) => {
+      console.log('comp')
+
+      console.log(comp)
       if (!comp || !comp.component) {
         return container;
       }
@@ -304,9 +308,21 @@ export default class WebformBuilder extends Webform {
 
   /* eslint-disable max-statements */
   editComponent(component, isJsonEdit) {
+    console.log('编辑组件');
+    console.log(component);
+    console.log(isJsonEdit);
     const componentCopy = _.cloneDeep(component);
-    let componentClass = Components.components[componentCopy.component.type];
-    const isCustom = componentClass === undefined;
+
+    let componentClass = Components.components[componentCopy.component.type];  //component.type=textfield
+    /****
+     *
+     *
+     * TextFieldComponent() {
+    _classCallCheck(this, TextFieldComponent);
+    return _possibleConstructorReturn(this, _getPrototypeOf(TextFieldComponent).apply(this, arguments));
+  }
+     ****/
+    const isCustom = componentClass === undefined;//false
     //custom component should be edited as JSON
     isJsonEdit = isJsonEdit || isCustom;
     componentClass = isCustom ? Components.components.unknown : componentClass;
@@ -314,7 +330,9 @@ export default class WebformBuilder extends Webform {
     if (this.dialog) {
       this.dialog.close();
     }
-    this.dialog = this.createModal(componentCopy.name);
+    // debugger
+
+    this.dialog = this.createModal(componentCopy.name);//Text Field
     const formioForm = this.ce('div');
     this.componentPreview = this.ce('div', {
       class: 'component-preview'
@@ -389,7 +407,8 @@ export default class WebformBuilder extends Webform {
         ])
       ])
     ]);
-
+    console.log('componentEdit');
+    console.log(componentEdit);
     // Append the settings page to the dialog body.
     this.dialog.body.appendChild(componentEdit);
 
@@ -443,7 +462,8 @@ export default class WebformBuilder extends Webform {
     // Pass along the form being edited.
     this.editForm.editForm = this._form;
     this.editForm.editComponent = component;
-
+    console.log('editForm')
+    console.log(this.editForm)
     // Update the preview with this component.
     this.updateComponent(componentCopy);
 

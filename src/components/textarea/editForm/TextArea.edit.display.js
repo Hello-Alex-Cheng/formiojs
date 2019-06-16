@@ -4,7 +4,7 @@ import Formio from '../../../Formio';
 export default [
   {
     key: 'inputMask',
-    ignore: true
+    ignore: false
   },
   {
     key: 'allowMultipleMasks',

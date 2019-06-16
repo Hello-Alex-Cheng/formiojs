@@ -4,7 +4,7 @@ import BaseComponent from '../base/Base';
 export default class TextFieldComponent extends BaseComponent {
   static schema(...extend) {
     return BaseComponent.schema({
-      label: 'Text Field',
+      label: '这是textFile',
       key: 'textField',
       type: 'textfield',
       mask: false,
