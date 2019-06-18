@@ -3,5 +3,5 @@ export default {
   'type': 'recaptcha',
   'key': 'reCaptcha',
   'label': 'reCAPTCHA',
-  'buttonKey': 'test'
+  'buttonKey': 'Test.js'
 };

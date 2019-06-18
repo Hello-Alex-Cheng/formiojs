@@ -856,7 +856,7 @@ describe('Plugins', () => {
       args: [
         {
           storage: 's3',
-          name: 'test'
+          name: 'Test.js'
         }
       ]
     },
@@ -866,7 +866,7 @@ describe('Plugins', () => {
       args: [
         {
           storage: 'dropbox',
-          name: 'test'
+          name: 'Test.js'
         }
       ]
     }
@@ -892,7 +892,7 @@ describe('Test Formio.js capabilities', () => {
       }
       NativePromise.resolve()
         .then(() => {
-          return test.test();
+          return test.Test();
         })
         .then(() => {
           if (test.mock) fetchMock.restore();

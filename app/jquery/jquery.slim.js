@@ -806,7 +806,7 @@ function Sizzle( selector, context, results, seed ) {
 			// Take advantage of querySelectorAll
 			if ( support.qsa &&
 				!nonnativeSelectorCache[ selector + " " ] &&
-				(!rbuggyQSA || !rbuggyQSA.test( selector )) &&
+				(!rbuggyQSA || !rbuggyQSA.Test( selector )) &&
 
 				// Support: IE 8 only
 				// Exclude object elements
@@ -1502,8 +1502,8 @@ Sizzle.matchesSelector = function( elem, expr ) {
 
 	if ( support.matchesSelector && documentIsHTML &&
 		!nonnativeSelectorCache[ expr + " " ] &&
-		( !rbuggyMatches || !rbuggyMatches.test( expr ) ) &&
-		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
+		( !rbuggyMatches || !rbuggyMatches.Test( expr ) ) &&
+		( !rbuggyQSA     || !rbuggyQSA.Test( expr ) ) ) {
 
 		try {
 			var ret = matches.call( elem, expr );

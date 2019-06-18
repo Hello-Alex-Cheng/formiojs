@@ -780,7 +780,7 @@ export function matchInputMask(value, inputMask) {
     const char = value[i];
     const charPart = inputMask[i];
 
-    if (!(_.isRegExp(charPart) && charPart.test(char) || charPart === char)) {
+    if (!(_.isRegExp(charPart) && charPart.Test(char) || charPart === char)) {
       return false;
     }
   }

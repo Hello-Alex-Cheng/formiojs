@@ -271,7 +271,7 @@ describe('checkCondition', () => {
     const component = {
       key: 'sum',
       conditional: {
-        when: 'test',
+        when: 'Test.js',
         eq: 3,
         show: true
       }
@@ -354,7 +354,7 @@ describe('checkTrigger', () => {
     const trigger = {
       type: 'simple',
       simple: {
-        when: 'test',
+        when: 'Test.js',
         eq: 3,
         show: true
       }
@@ -404,7 +404,7 @@ describe('checkTrigger', () => {
 describe('setActionProperty', () => {
   it('should set a boolean action property to true', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       disabled: false
     };
     const action = {
@@ -422,7 +422,7 @@ describe('setActionProperty', () => {
 
   it('should set a boolean action property to false', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       disabled: true
     };
     const action = {
@@ -440,7 +440,7 @@ describe('setActionProperty', () => {
 
   it('should set a boolean action nested property', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       validate: {
         required: true
       }
@@ -460,7 +460,7 @@ describe('setActionProperty', () => {
 
   it('should set a string action property', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       label: 'foo'
     };
     const action = {
@@ -478,7 +478,7 @@ describe('setActionProperty', () => {
 
   it('should set a string action property with row templating', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       label: 'foo'
     };
     const action = {
@@ -496,7 +496,7 @@ describe('setActionProperty', () => {
 
   it('should set a string action property with data templating', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       label: 'foo'
     };
     const action = {
@@ -514,7 +514,7 @@ describe('setActionProperty', () => {
 
   it('should set a string action property with result templating', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       label: 'foo'
     };
     const action = {
@@ -532,7 +532,7 @@ describe('setActionProperty', () => {
 
   it('should set a string action property with component templating', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       label: 'foo'
     };
     const action = {
@@ -550,7 +550,7 @@ describe('setActionProperty', () => {
 
   it('should do nothing with a bad request', () => {
     const component = {
-      key: 'test',
+      key: 'Test.js',
       label: 'foo'
     };
     const originalComponent = _.cloneDeep(component);

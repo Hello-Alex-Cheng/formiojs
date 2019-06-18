@@ -18,8 +18,10 @@ export default class TextAreaComponent extends TextFieldComponent {
   }
 
   static get builderInfo() {
+    console.log('这是testarea属性')
+    console.log(TextAreaComponent.schema())
     return {
-      title: 'Text Area',
+      title: '这是测试',
       group: 'basic',
       icon: 'fa fa-font',
       documentation: 'http://help.form.io/userguide/#textarea',

@@ -24,7 +24,7 @@ export default {
     'Test invalid email'(form, done) {
       Harness.testErrors(form, {data: {
         date: Harness.getDate(),
-        firstName: 'test',
+        firstName: 'Test.js',
         lastName: 'test2',
         email: 'bademail',
         submit: false,

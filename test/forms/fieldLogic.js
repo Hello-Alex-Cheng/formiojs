@@ -33,7 +33,7 @@ export default {
         'suffix': '',
         'prefix': '',
         'placeholder': '',
-        'key': 'test',
+        'key': 'Test.js',
         'label': 'Test',
         'inputMask': '',
         'inputType': 'text',

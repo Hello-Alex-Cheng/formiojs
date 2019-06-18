@@ -19,7 +19,13 @@ export default class WebformBuilder extends Webform {
     this.updateDraggable = _.debounce(this.refreshDraggable.bind(this), 200);
 
     // Setup the builder options.
+
+    /**
+     * 得到四个分组 分别为 advanced basic data layout**/
     this.options.builder = _.defaultsDeep({}, this.options.builder, this.defaultComponents);
+
+    /**
+     * 就是这五个按钮*/
     this.options.enableButtons = _.defaults({}, this.options.enableButtons, {
       remove: true,
       copy: true,
@@ -157,6 +163,8 @@ export default class WebformBuilder extends Webform {
     this.setBuilderElement();
   }
 
+
+  /** 左边栏的配置项  如果type为button  则渲染一个按钮  **/
   get defaultComponents() {
     return {
       basic: {
@@ -175,6 +183,15 @@ export default class WebformBuilder extends Webform {
       data: {
         title: 'Data',
         weight: 30
+      },
+      test: {
+        title: '这是一个测试',
+        weight: 40,
+        type:'button'
+      },
+      newGroup: {
+        title: '新增的组',
+        weight: 50,
       }
     };
   }
@@ -306,22 +323,12 @@ export default class WebformBuilder extends Webform {
     this.emit('updateComponent', component);
   }
 
-  /* eslint-disable max-statements */
+  /*** ***eslint-disable max-statements  此函数为渲染弹出框****************** */
   editComponent(component, isJsonEdit) {
-    console.log('编辑组件');
-    console.log(component);
-    console.log(isJsonEdit);
-    const componentCopy = _.cloneDeep(component);
+    debugger
 
+    const componentCopy = _.cloneDeep(component);
     let componentClass = Components.components[componentCopy.component.type];  //component.type=textfield
-    /****
-     *
-     *
-     * TextFieldComponent() {
-    _classCallCheck(this, TextFieldComponent);
-    return _possibleConstructorReturn(this, _getPrototypeOf(TextFieldComponent).apply(this, arguments));
-  }
-     ****/
     const isCustom = componentClass === undefined;//false
     //custom component should be edited as JSON
     isJsonEdit = isJsonEdit || isCustom;
@@ -330,7 +337,6 @@ export default class WebformBuilder extends Webform {
     if (this.dialog) {
       this.dialog.close();
     }
-    // debugger
 
     this.dialog = this.createModal(componentCopy.name);//Text Field
     const formioForm = this.ce('div');
@@ -353,15 +359,19 @@ export default class WebformBuilder extends Webform {
       class: 'btn btn-danger'
     }, this.t('Remove'));
 
+
+    /****   下方为创建弹出框****/
     const componentEdit = this.ce('div', {}, [
-      this.ce('div', {
+      this.ce('div', {    //
         class: 'row'
       }, [
         this.ce('div', {
           class: 'col col-sm-6'
         }, this.ce('p', {
           class: 'lead'
-        }, `${this.t(componentInfo.title)} ${this.t('Component')}`)),
+        }, `${this.t(componentInfo.title)} ${this.t('Component')}`)), //弹出框的顶部标题
+
+
         this.ce('div', {
           class: 'col col-sm-6'
         }, [
@@ -374,8 +384,10 @@ export default class WebformBuilder extends Webform {
           }, this.ce('i', {
             class: this.iconClass('new-window')
           }, ` ${this.t('Help')}`)))
-        ])
+        ]) //弹出框顶部右侧的Help按钮
       ]),
+
+      /*** 上方为创建了一行 包括顶部标题和help按钮  下方创建  左侧加载， 右侧 展示区 ***/
       this.ce('div', {
         class: 'row'
       }, [
@@ -392,11 +404,11 @@ export default class WebformBuilder extends Webform {
               class: 'card-header panel-heading'
             }, this.ce('h4', {
               class: 'card-title panel-title mb-0'
-            }, this.t('Preview'))),
+            }, this.t('修改后的展示区域'))),
             this.ce('div', {
               class: 'card-body panel-body'
             }, this.componentPreview)
-          ]),
+          ]), //输入框区域
           this.ce('div', {
             style: 'margin-top: 10px;'
           }, [
@@ -435,6 +447,8 @@ export default class WebformBuilder extends Webform {
       };
     }
     else {
+
+      /*** **********  顶部下方六个导航菜单  *********** ****/
       editForm = componentClass.editForm(_.cloneDeep(overrides));
     }
 
@@ -793,11 +807,14 @@ export default class WebformBuilder extends Webform {
     this.insertInOrder(info, this.groups, info.element, container);
   }
 
+
+  /**   设置左边栏的关键函数 ***/
   buildSidebar() {
     // Do not rebuild the sidebar.
     if (this.sideBarElement) {
       return;
     }
+    console.log(this.options);
     this.groups = {};
     this.sidebarContainers = [];
     this.sideBarElement = this.ce('div', {
@@ -805,7 +822,7 @@ export default class WebformBuilder extends Webform {
       class: 'accordion panel-group'
     });
 
-    // Add the groups.
+    /*** Add the groups.先把组分好  包括组名***/
     _.each(this.options.builder, (info, group) => {
       if (info) {
         info.key = group;
@@ -818,8 +835,9 @@ export default class WebformBuilder extends Webform {
       }
     });
 
-    // Get all of the components builder info grouped and sorted.
+    /***Get all of the components builder info grouped and sorted.***/
     const components = {};
+    console.log(Components.components)
     const allComponents = _.filter(_.map(Components.components, (component, type) => {
       if (!component.builderInfo) {
         return null;
@@ -846,6 +864,10 @@ export default class WebformBuilder extends Webform {
     );
 
     // Add the new sidebar element.
+    /**
+     * 将设置的所有子元素添加到之前设置好的容器中
+     *
+     * **/
     this.builderSidebar.appendChild(this.sideBarElement);
     this.updateDraggable();
     this.sideBarTop = this.sideBarElement.getBoundingClientRect().top + window.scrollY;
@@ -914,6 +936,8 @@ export default class WebformBuilder extends Webform {
 
   /* eslint-disable  max-statements */
   onDrop(element, target, source, sibling) {
+    // debugger
+     console.log(Components.components);
     if (!element || !element.id) {
       console.warn('No element.id defined for dropping');
       return;
@@ -965,7 +989,7 @@ export default class WebformBuilder extends Webform {
 
       // Edit the component.
       this.editComponent(component);
-
+       //todo
       // Remove the element.
       target.removeChild(element);
     }

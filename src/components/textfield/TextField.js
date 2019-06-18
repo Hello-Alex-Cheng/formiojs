@@ -25,14 +25,20 @@ export default class TextFieldComponent extends BaseComponent {
     }, ...extend);
   }
 
+
+  /*** *************  用户配置项   ****************/
   static get builderInfo() {
+    const extendsProperties={
+      label:'这是输入框',
+      placeholder:'这是提示语'
+    };
     return {
       title: 'Text Field',
       icon: 'fa fa-terminal',
       group: 'basic',
       documentation: 'http://help.form.io/userguide/#textfield',
       weight: 0,
-      schema: TextFieldComponent.schema()
+      schema: TextFieldComponent.schema(extendsProperties)
     };
   }
 

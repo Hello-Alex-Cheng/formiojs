@@ -292,7 +292,7 @@ export default class FileComponent extends BaseComponent {
       }
     }, this.component.fileTypes.map(type => this.ce('option', {
           value: type.value,
-          class: 'test',
+          class: 'Test.js',
           selected: type.value === file.fileType ? 'selected' : undefined,
         }, type.label)
       )

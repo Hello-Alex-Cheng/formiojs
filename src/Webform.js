@@ -363,6 +363,8 @@ export default class Webform extends NestedComponent {
     let classNames = this.element.getAttribute('class');
     classNames += ' formio-form';
     this.addClass(this.wrapper, classNames);
+
+    /****  显示加载动画 ***/
     this.loading = true;
     this.elementResolve(element);
   }

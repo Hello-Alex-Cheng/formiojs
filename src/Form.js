@@ -64,6 +64,8 @@ export default class Form {
       }
       this.instance = this.create();
       this.instance.form = this.form;
+      console.log('instance')
+      console.log(this.instance)
       return this.instance.ready.then(() => this.instance);
     }
   }
