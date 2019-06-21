@@ -12,9 +12,9 @@
     "embed.js",
     "full.js"
   ],
-  "pre-commit": [
-    "lint"
-  ],
+//  "pre-commit": [
+//    "lint"
+//  ],
   "scripts": {
     "build": "esdoc;gulp build",
     "watch": "babel -w ./src/ --out-dir ./lib/",

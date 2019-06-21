@@ -43,7 +43,7 @@ import TreeComponent from './tree/Tree';
 import UnknownComponent from './unknown/Unknown';
 import UrlComponent from './url/Url';
 import WellComponent from './well/Well';
-import TestComponent from './test/Test'
+import TestComponent from './test/Test';
 export default {
   address: AddressComponent,
   base: BaseComponent,

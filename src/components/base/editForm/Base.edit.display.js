@@ -6,10 +6,13 @@ export default [
     input: true,
     key: 'label',
     label: 'Label',
+    hidden:false,  //显示隐藏该项
     placeholder: 'Field Label',
     tooltip: 'The label for this field that will appear next to it.',
+    disabled:false,
+    prefix:'前缀',
     validate: {
-      required: true
+      required: false
     }
   },
   {

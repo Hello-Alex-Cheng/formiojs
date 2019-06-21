@@ -56,6 +56,7 @@ export default function(...extend) {
     key: 'tabs',
     components: items
   })));
+  console.log(components)
   return {
     components: _.unionWith(components, EditFormUtils.unifyComponents).concat({
       type: 'hidden',

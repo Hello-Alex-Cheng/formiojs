@@ -270,6 +270,9 @@ export default class WebformBuilder extends Webform {
     return remove;
   }
 
+
+
+  /** Abel  用来更新展示区域的组件 当配置项有修改时，对应重新build 该组件 ***/
   updateComponent(component) {
     // Update the preview.
     if (this.componentPreview) {
@@ -287,6 +290,7 @@ export default class WebformBuilder extends Webform {
         _.merge(component.component, comp.component);
         this.editForm.redraw();
       });
+      console.log(Components)
       this.preview.build();
       this.preview.isBuilt = true;
       this.componentPreview.innerHTML = '';
@@ -325,7 +329,6 @@ export default class WebformBuilder extends Webform {
 
   /*** ***eslint-disable max-statements  此函数为渲染弹出框****************** */
   editComponent(component, isJsonEdit) {
-    debugger
 
     const componentCopy = _.cloneDeep(component);
     let componentClass = Components.components[componentCopy.component.type];  //component.type=textfield
@@ -360,7 +363,7 @@ export default class WebformBuilder extends Webform {
     }, this.t('Remove'));
 
 
-    /****   下方为创建弹出框****/
+    /****  Abel 下方为创建弹出框****/
     const componentEdit = this.ce('div', {}, [
       this.ce('div', {    //
         class: 'row'
@@ -387,7 +390,7 @@ export default class WebformBuilder extends Webform {
         ]) //弹出框顶部右侧的Help按钮
       ]),
 
-      /*** 上方为创建了一行 包括顶部标题和help按钮  下方创建  左侧加载， 右侧 展示区 ***/
+      /*** Abel 上方为创建了一行 包括顶部标题和help按钮  下方创建  左侧加载， 右侧 展示区 ***/
       this.ce('div', {
         class: 'row'
       }, [
@@ -449,7 +452,7 @@ export default class WebformBuilder extends Webform {
     else {
 
       /*** **********  顶部下方六个导航菜单  *********** ****/
-      editForm = componentClass.editForm(_.cloneDeep(overrides));
+      editForm = componentClass.editForm(_.cloneDeep(overrides));//
     }
 
     // Change the defaultValue component to be reflective.
@@ -975,7 +978,6 @@ export default class WebformBuilder extends Webform {
       if (target.dragEvents && target.dragEvents.onDrop) {
         target.dragEvents.onDrop(element, target, source, sibling, componentSchema);
       }
-
       // Add the new component.
       const component = this.addComponentTo(componentSchema, newParent.component, newParent, sibling, (comp) => {
         // Set that this is a new component.
@@ -989,9 +991,8 @@ export default class WebformBuilder extends Webform {
 
       // Edit the component.
       this.editComponent(component);
-       //todo
       // Remove the element.
-      target.removeChild(element);
+      // target.removeChild(element);
     }
     // Check to see if this is a moved component.
     else if (element.component) {

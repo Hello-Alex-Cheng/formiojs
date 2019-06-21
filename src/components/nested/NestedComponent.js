@@ -191,6 +191,9 @@ export default class NestedComponent extends BaseComponent {
       comp.persist = state.persist;
       delete state.persist;
     }
+
+
+    /***    关键函数  调用每个对应组件的build函数  **/
     comp.build(state);
     comp.isBuilt = true;
     if (component.internal) {
@@ -244,6 +247,8 @@ export default class NestedComponent extends BaseComponent {
       element.insertBefore(compElement, before);
     }
     else {
+
+      /****  添加elemnt到 右测被拖动区域 *****/
       element.appendChild(compElement);
     }
     this.setHidden(comp);

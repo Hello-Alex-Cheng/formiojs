@@ -590,6 +590,7 @@ export default class Webform extends NestedComponent {
    * @param {boolean} loading - If this form should be "loading" or not.
    */
   set loading(loading) {
+    return
     if (this._loading !== loading) {
       this._loading = loading;
       if (!this.loader && loading) {

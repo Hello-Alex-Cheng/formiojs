@@ -4,7 +4,7 @@ import BaseComponent from '../base/Base';
 export default class TextFieldComponent extends BaseComponent {
   static schema(...extend) {
     return BaseComponent.schema({
-      label: '这是textFile',
+      // label: '这是textFile',
       key: 'textField',
       type: 'textfield',
       mask: false,
@@ -26,11 +26,12 @@ export default class TextFieldComponent extends BaseComponent {
   }
 
 
-  /*** *************  用户配置项   ****************/
+  /*** *************  Abel用户配置项   ****************/
   static get builderInfo() {
     const extendsProperties={
-      label:'这是输入框',
-      placeholder:'这是提示语'
+      label:'这是label',
+      placeholder:'这是placeholder',
+      test:'这是测试'
     };
     return {
       title: 'Text Field',

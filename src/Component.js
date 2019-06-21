@@ -363,6 +363,11 @@ export default class Component {
     return document.createTextNode(this.t(text));
   }
 
+  /*** Abel新增  set the color  **/
+
+  color(color){
+    return
+  }
   /**
    * Adds an object of attributes onto an element.
    * @param {HtmlElement} element - The element to add the attributes to.

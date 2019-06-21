@@ -2,6 +2,20 @@ import Widgets from '../../../widgets';
 import _ from 'lodash';
 export default [
   {
+    weight: 0,
+    type: 'textfield',
+    input: true,
+    key: 'label',
+    label: 'New Label',
+    hidden:true,  //显示隐藏该项
+    placeholder: 'Field Label',
+    tooltip: 'The label for this field that will appear next to it.',
+    labelPosition:'bottom',
+    validate: {
+      required: true
+    }
+  },
+  {
     weight: 50,
     type: 'select',
     input: true,

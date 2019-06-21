@@ -513,6 +513,9 @@ export default class BaseComponent extends Component {
   /**
    * Builds the component.
    */
+
+  /***  this.element就是我们要创建的配置项dom 其中  如果有部分方法在对应组件中 如 this.createInput
+   * 是在select中自己有方法***/
   build(state) {
     state = state || {};
     this.calculatedValue = state.calculatedValue;
@@ -1208,6 +1211,11 @@ export default class BaseComponent extends Component {
       if (this.info.attr.id) {
         this.labelElement.setAttribute('for', this.info.attr.id);
       }
+      /*** Abel 新增 set  color  **/
+
+      if(this.component.color){
+        this.labelElement.setAttribute('style',`color:${this.component.color}`)
+      }
       this.labelElement.appendChild(this.text(this.component.label));
       this.createTooltip(this.labelElement);
     }
@@ -1403,14 +1411,16 @@ export default class BaseComponent extends Component {
    * @param {HTMLElement} container - The container which should hold this new input element.
    * @returns {HTMLElement} - Either the input or the group that contains the input.
    */
+
+  /**  Abel 此处的创建  input指的是创建标签右侧的全部 包括 前缀 输入框 后缀 **/
   createInput(container) {
     const input = this.ce(this.info.type, this.info.attr);
 
     this.setInputMask(input);
     input.widget = this.createWidget();
-    const inputGroup = this.addInputGroup(input, container);
+    const inputGroup = this.addInputGroup(input, container);//Abel 若有前缀  后缀等 则创建的是 inputGroup
     this.addPrefix(input, inputGroup);
-    this.addInput(input, inputGroup || container);
+    this.addInput(input, inputGroup || container);//Abel 创建输入框
     this.addSuffix(input, inputGroup);
     this.errorContainer = container;
     this.setInputStyles(inputGroup || input);
@@ -2198,6 +2208,7 @@ export default class BaseComponent extends Component {
    *
    * @param flags
    */
+  /****  Abel 这个函数只是单纯的修改当前对应的值  不是设置右边展示区域的函数***/
   updateValue(flags, value) {
     if (!this.hasInput) {
       return false;

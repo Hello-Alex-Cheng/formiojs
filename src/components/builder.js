@@ -44,6 +44,7 @@ import TreeForm from './tree/Tree.form';
 import UnknownForm from './unknown/Unknown.form';
 import UrlForm from './url/Url.form';
 import WellForm from './well/Well.form';
+import TestForm from './test/Test.form';
 
 Components.address.editForm = AddressForm;
 Components.base.editForm = BaseForm;
@@ -89,5 +90,6 @@ Components.tree.editForm = TreeForm;
 Components.unknown.editForm = UnknownForm;
 Components.url.editForm = UrlForm;
 Components.well.editForm = WellForm;
+Components.test.editForm = TestForm;
 
 export default Components;

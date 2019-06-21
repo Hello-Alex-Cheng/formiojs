@@ -10753,8 +10753,8 @@ window.esdocSearchIndex = [
   ],
   [
     "src/components/tabs/editform/tabs.edit.display.js",
-    "file/src/components/tabs/editForm/Tabs.edit.display.js.html",
-    "src/components/tabs/editForm/Tabs.edit.display.js",
+    "file/src/components/tabs/editForm/Test.edit.display.js.html",
+    "src/components/tabs/editForm/Test.edit.display.js",
     "file"
   ],
   [
